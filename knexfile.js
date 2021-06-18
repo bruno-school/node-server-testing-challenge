@@ -10,42 +10,42 @@ module.exports = {
 		},
 		migrations: {
 			tableName: 'knex_migrations',
-			directory: './api/database',
+			directory: './api/database/migrations',
 		},
 		seeds: {
-			directory: './api/database',
+			directory: './api/database/seeds',
 		},
 	},
 
 	testing: {
 		client: 'postgresql',
-		connection: {
-			database: 'my_db',
-			user: 'username',
-			password: 'password',
-		},
+		connection: process.env.TEST_DB_URL,
 		pool: {
 			min: 2,
 			max: 10,
 		},
 		migrations: {
 			tableName: 'knex_migrations',
+			directory: './api/database/migrations/test',
+		},
+		seeds: {
+			directory: './api/database/seeds/test',
 		},
 	},
 
 	production: {
 		client: 'postgresql',
-		connection: {
-			database: 'my_db',
-			user: 'username',
-			password: 'password',
-		},
+		connection: process.env.DB_URL,
 		pool: {
 			min: 2,
 			max: 10,
 		},
 		migrations: {
 			tableName: 'knex_migrations',
+			directory: './api/database/migrations/',
+		},
+		seeds: {
+			directory: './api/database/seeds/',
 		},
 	},
 }
